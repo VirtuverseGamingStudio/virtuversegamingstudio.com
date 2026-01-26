@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, ChevronDown } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Menu, ChevronDown, Home, Info, Gamepad2, Briefcase, Mail, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -19,18 +19,18 @@ export function Navbar() {
     }, []);
 
     const navItems = [
-        { name: "Home", href: "/" },
-        { name: "About", href: "/about" },
-        { name: "Games", href: "/games" },
-        { name: "Services", href: "/services" },
-        { name: "Contact", href: "/contact" },
+        { name: "Home", href: "/", icon: Home },
+        { name: "About", href: "/about", icon: Info },
+        { name: "Games", href: "/games", icon: Gamepad2 },
+        { name: "Services", href: "/services", icon: Briefcase },
+        { name: "Contact", href: "/contact", icon: Mail },
     ];
 
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? "bg-white shadow-lg border-b border-gray-200"
-                    : "bg-white/95 backdrop-blur-md border-b border-gray-100"
+                ? "bg-white shadow-lg border-b border-gray-200"
+                : "bg-white/95 backdrop-blur-md border-b border-gray-100"
                 }`}
         >
             <div className="container mx-auto px-6 lg:px-12">
@@ -77,22 +77,30 @@ export function Navbar() {
                     <div className="lg:hidden">
                         <Sheet>
                             <SheetTrigger asChild>
-                                <Button variant="ghost" size="icon" className="relative">
+                                <Button variant="ghost" size="icon" className="relative cursor-pointer hover:scale-110 hover:bg-primary/10 hover:text-primary transition-all duration-300 rounded-full">
                                     <Menu className="h-6 w-6 text-gray-700" />
                                     <span className="sr-only">Toggle menu</span>
                                 </Button>
                             </SheetTrigger>
                             <SheetContent side="right" className="w-[300px] bg-white border-l border-gray-200">
-                                <div className="flex flex-col gap-6 mt-12">
-                                    {navItems.map((item) => (
-                                        <Link
-                                            key={item.name}
-                                            href={item.href}
-                                            className="text-lg font-semibold text-gray-700 hover:text-primary transition-colors py-2"
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    ))}
+                                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                                <div className="flex flex-col gap-3 mt-12">
+                                    {navItems.map((item) => {
+                                        const Icon = item.icon;
+                                        return (
+                                            <Link
+                                                key={item.name}
+                                                href={item.href}
+                                                className="group relative flex items-center gap-4 px-4 py-3 text-lg font-semibold text-gray-700 hover:text-primary transition-all duration-300 rounded-xl hover:bg-primary/5 border border-transparent hover:border-primary/20"
+                                            >
+                                                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-blue-600/10 flex items-center justify-center group-hover:from-primary group-hover:to-blue-600 transition-all duration-300 group-hover:scale-110">
+                                                    <Icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                                                </div>
+                                                <span className="flex-1">{item.name}</span>
+                                                <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                                            </Link>
+                                        );
+                                    })}
                                     {/* <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-12 rounded-md mt-4">
                                         <Link href="/contact">Get Started</Link>
                                     </Button> */}
