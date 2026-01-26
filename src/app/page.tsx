@@ -388,10 +388,11 @@ export default function Home() {
                 <Button
                   size="lg"
                   asChild
-                  className="bg-white hover:bg-gray-50 text-primary font-bold px-10 h-14 text-lg rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-white"
+                  className="relative bg-white hover:bg-gradient-to-r hover:from-white hover:to-blue-50 text-primary font-bold px-10 h-14 text-lg rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-white hover:border-blue-100 hover:scale-105 group/portfolio overflow-hidden"
                 >
-                  <Link href="/games">
+                  <Link href="/games" className="flex items-center gap-2 relative z-10">
                     View Portfolio
+                    <ArrowRight className="w-5 h-5 group-hover/portfolio:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
               </div>

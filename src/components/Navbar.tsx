@@ -37,7 +37,7 @@ export function Navbar() {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center group relative z-10">
-                        <div className="relative h-18 w-52 transition-transform duration-300 group-hover:scale-105">
+                        <div className="relative h-18 w-56 transition-transform duration-300 group-hover:scale-105">
                             <img
                                 src="/logo 2.png"
                                 alt="Virtuverse Gaming Studio"

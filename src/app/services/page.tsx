@@ -182,10 +182,11 @@ export default function ServicesPage() {
                                     <Button
                                         size="lg"
                                         asChild
-                                        className="bg-primary hover:bg-primary/90 text-white font-bold px-10 h-14 text-lg rounded-lg shadow-xl border-2 border-primary"
+                                        className="relative bg-primary hover:bg-gradient-to-r hover:from-primary hover:to-blue-700 text-white font-bold px-10 h-14 text-lg rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-primary hover:border-blue-400 hover:scale-105 group/work overflow-hidden"
                                     >
-                                        <Link href="/games">
+                                        <Link href="/games" className="flex items-center gap-2 relative z-10">
                                             View Our Work
+                                            <ArrowRight className="w-5 h-5 group-hover/work:translate-x-1 transition-transform" />
                                         </Link>
                                     </Button>
                                 </div>
